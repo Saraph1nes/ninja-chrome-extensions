@@ -1,0 +1,46 @@
+{
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "name": "Ninja",
+  "permissions": [
+    "bookmarks"
+  ],
+  "description": "Ninja NewTab",
+  "background": {
+    "service_worker": "background.bundle.js"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScript.bundle.js"
+      ],
+      "css": [
+        "content.styles.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content.styles.css",
+        "icon-16.png",
+        "icon-48.png",
+        "icon-128.png"
+      ],
+      "matches": []
+    }
+  ]
+}

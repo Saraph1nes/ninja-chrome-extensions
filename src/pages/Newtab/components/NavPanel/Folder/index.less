@@ -1,0 +1,50 @@
+@import '../../../base';
+
+.folder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 12px;
+  height: @sa-grid-item-base;
+  width: @sa-grid-item-base;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(59, 59, 59, 0.5);
+  }
+
+  .folder-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 2px;
+    column-gap: 2px;
+
+    .folder-img-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 3px;
+      background: #ffffff;
+      height: 15px;
+      width: 15px;
+
+      & > .img-icon-img-error {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .folder-dialog {
+    //overflow: hidden;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 0;
+    height: 0;
+  }
+}

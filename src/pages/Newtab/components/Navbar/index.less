@@ -1,0 +1,121 @@
+.animation(@name,@rules) {
+  @keyframes @name {
+    @rules();
+  }
+}
+
+.nav-bar {
+  height: 50px;
+  position: relative;
+  display: flex;
+  backdrop-filter: blur(50px);
+  background-color: rgba(255,255,255, 5%);
+  user-select: none;
+  width: 100%;
+
+  .nav-bar-left{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    //.expand-button-area {
+    //
+    //  .expand-button {
+    //    padding: 10px;
+    //    border-radius: 6px;
+    //
+    //    &.visible {
+    //      cursor: pointer;
+    //      background: #eff0f0;
+    //      animation: changeBg 200ms linear;
+    //    }
+    //
+    //    .animation(changeBg, {
+    //      from {
+    //        background: #ffffff;
+    //      }
+    //      to {
+    //        background: #eff0f0;
+    //      }
+    //    })
+    //  }
+    //}
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+
+      &-title {
+        font-size: 15px;
+        margin-left: 10px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .nav-bar-center{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: 100%;
+  }
+
+  //.nav-bar-right{
+  //  width: 200px;
+  //  display: flex;
+  //  flex-flow: row-reverse;
+  //  align-items: center;
+  //  position: relative;
+  //  padding-right: 16px;
+  //  
+  //  .dark-mode-btn{
+  //    display: flex;
+  //    justify-content: center;
+  //    align-items: center;
+  //    width: 30px;
+  //    height: 30px;
+  //  }
+  //
+  //  .weather-svg-wrapper{
+  //    border-radius: 6px;
+  //    width: 34px;
+  //    height: 34px;
+  //
+  //    &.visible {
+  //      cursor: pointer;
+  //      background: #eff0f0;
+  //      animation: changeBg 200ms linear;
+  //    }
+  //  }
+  //
+  //  .switch-area {
+  //    position: absolute;
+  //  }
+  //}
+}
+
+.nav-bar-popover-content {
+  min-width: 500px;
+
+  &-item {
+    margin-bottom: 16px;
+
+    &-card {
+      .ant-card-body{
+        padding: 0;
+
+        .content-wrapper{
+          display: flex;
+          padding: 20px;
+          justify-content: center;
+
+          .title{
+            color: #000000d9;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

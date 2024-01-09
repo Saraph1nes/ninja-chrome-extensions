@@ -1,0 +1,51 @@
+export const searchSelectorList = [
+  {
+    id: 0,
+    value: 'google',
+    text: 'Google',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/google.b2aa33a4.png',
+    url: 'https://www.google.com/search?q=',
+  },
+  {
+    id: 1,
+    value: 'baidu',
+    text: 'Baidu',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/baidu.10d6d640.png',
+    url: 'https://www.baidu.com/s?wd=',
+  },
+  {
+    id: 2,
+    value: 'github',
+    text: 'Github',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/github.cef68f2e.png',
+    url: 'https://github.com/search?q=',
+  },
+  {
+    id: 3,
+    value: 'stackOverflow',
+    text: 'StackOverflow',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/stack-overflow.86a0756c.png',
+    url: 'https://search.gitee.com/?skin=rec&type=repository&q=',
+  },
+  {
+    id: 4,
+    value: 'bing',
+    text: 'Bing',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/bing.87fce0cd.png',
+    url: 'https://cn.bing.com/search?q=',
+  },
+  {
+    id: 5,
+    value: 'gitee',
+    text: 'Gitee',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/gitee-fill-round.png',
+    url: 'https://search.gitee.com/?skin=rec&type=repository&q=',
+  },
+  {
+    id: 6,
+    value: 'juejin',
+    text: 'Juejin',
+    src: 'https://assets-img.ezrpro.com/pc/img/others/juejin.svg',
+    url: 'https://juejin.cn/search?query=',
+  },
+];

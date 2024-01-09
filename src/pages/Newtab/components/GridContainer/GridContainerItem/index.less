@@ -1,0 +1,51 @@
+@import '../../../base';
+
+.grid-container-item {
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0 calc(@sa-grid-gap-base / 2) @sa-grid-gap-base;
+  width: calc(@sa-grid-item-base + @sa-grid-gap-base);
+  height: calc(@sa-grid-item-base + @sa-grid-gap-base);
+  box-sizing: border-box;
+
+  .grid-container-item-img-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    height: @sa-grid-item-base;
+    width: @sa-grid-item-base;
+    background: #ffffff;
+
+    & > .img-icon-img-error {
+      font-size: 40px;
+    }
+  }
+
+  &-label {
+    margin-top: 3px;
+    text-align: center;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.item-size-small {
+  width: calc(@sa-grid-item-base + @sa-grid-gap-base);
+  height: calc(@sa-grid-item-base + @sa-grid-gap-base);
+
+  & > .grid-container-item-label {
+    width: calc(@sa-grid-item-base + 30px);
+    transform: translate(-15px);
+  }
+}
+
+.item-size-medium {
+  grid-column: span 4;
+  grid-row: span 2;
+  width: calc(@sa-grid-item-base * 4 + @sa-grid-gap-base * 4);
+  height: calc(@sa-grid-item-base * 2 + @sa-grid-gap-base * 2);
+}

@@ -1,0 +1,141 @@
+@import '../../base.less';
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 3%;
+  position: relative;
+  justify-content: center;
+
+  .search-panel {
+    transition: all 0.2s ease-out;
+    overflow: hidden;
+    border-radius: 25px;
+    width: 40%;
+    margin-top: 10px;
+
+    &.search-active {
+      border-radius: 25px 25px 0 0;
+    }
+
+    .search-input-area {
+      position: relative;
+
+      .search-select-btn {
+        overflow: hidden;
+        width: 26px;
+        height: 26px;
+        z-index: 10 !important;
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        border-radius: 50%;
+      }
+
+      .search-input {
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        width: 100%;
+        height: 40px;
+        padding: 0 50px;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+
+        @media (prefers-color-scheme: dark) {
+          background: rgba(59, 59, 59, 0.5);
+        }
+      }
+
+      .search-btn {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 10 !important;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 0 25px 25px 0;
+        overflow: hidden;
+
+        .search-btn-icon {
+
+          & > svg {
+            width: 20px;
+            height: 20px;
+          }
+
+        }
+      }
+    }
+  }
+
+  .suggest-panel-wrapper {
+    z-index: 999;
+    width: 40%;
+    left: 50%;
+    padding: 10px 0 20px;
+    border-radius: 0 0 25px 25px;
+    transform: translateX(-50%);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    box-sizing: border-box;
+    position: absolute;
+    color: @sa-text-1;
+    background: rgba(255, 255, 255, 0.5);
+
+    @media (prefers-color-scheme: dark) {
+      background: rgba(59, 59, 59, 0.5);
+      color: @sa-text-1-dark;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    .suggest-panel {
+
+      &-item {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        clear: both;
+        height: 30px;
+        padding-right: 10px;
+        text-indent: 20px;
+        line-height: 30px;
+        cursor: pointer;
+        transition: 500ms;
+
+        &.active {
+          color: @sa-text-1-dark;
+          background: rgba(59, 59, 59, 0.5);
+          text-indent: 30px;
+
+          @media (prefers-color-scheme: dark) {
+            background: rgba(255, 255, 255, 0.5);
+            color: @sa-text-1;
+            text-indent: 30px;
+          }
+        }
+      }
+    }
+
+
+    //&:before{
+    //  content: '';
+    //  background: inherit;
+    //  position: absolute;
+    //  left: 0;  //giving minus -25px left position
+    //  right: 0;
+    //  top: 0;   //giving minus -25px top position
+    //  bottom: 0;
+    //  box-shadow: inset 0 0 0 200px rgba(14, 14, 14, 0.3);
+    //  filter: blur(10px);
+    //}
+  }
+}

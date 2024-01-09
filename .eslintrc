@@ -1,0 +1,26 @@
+{
+  "extends": "plugin:prettier/recommended",
+  "globals": {
+    "chrome": "readonly"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2023,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "standard",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "import/ignore": [
+      "node_modules"
+    ]
+  }
+}

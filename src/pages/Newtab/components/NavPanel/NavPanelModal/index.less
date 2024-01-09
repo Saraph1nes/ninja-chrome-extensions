@@ -1,0 +1,43 @@
+@import '../../../base';
+
+.nav-panel-modal {
+
+  color: @sa-text-1-dark;
+  box-sizing: border-box;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  width: 50%;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 1002;
+  cursor: default;
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(10, 10, 10, 0.5);
+  }
+
+  &.visible {
+    display: block;
+  }
+}
+
+.nav-panel-modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  z-index: 1001;
+  cursor: default;
+
+  &.visible {
+    display: block;
+  }
+}

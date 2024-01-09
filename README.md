@@ -1,2 +1,7 @@
-# ninja-chrome-extensions
-ninja chrome 起始页插件
+## 介绍
+
+本项目用于chrome、edge扩展新标签页
+
+将收藏夹进行UI展示，拥有随浏览器账号同步的功能
+
+提供多搜索引擎，方便搜索

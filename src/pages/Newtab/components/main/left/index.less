@@ -1,0 +1,45 @@
+.main-left {
+  width: 400px;
+  margin-right: 20px;
+  flex-shrink: 0;
+
+  .main-left-card {
+    & > .ant-card-body {
+      height: calc(100vh - 296px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    &-item {
+      margin-bottom: 20px;
+
+      .ant-card-body {
+        padding: 0;
+
+        .item-wrapper {
+          display: flex;
+          padding: 20px;
+
+          .item-wrapper-text-content {
+            margin-left: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            &-title {
+              color: #000000D9;
+              font-weight: 600;
+            }
+
+            &-desc {
+              color: #999999D9;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
