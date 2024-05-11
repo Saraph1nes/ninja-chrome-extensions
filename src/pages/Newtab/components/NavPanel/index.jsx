@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GridContainer from '../GridContainer';
 import GridContainerItem from '../GridContainer/GridContainerItem';
-import Weather from './weather';
+import Weather from './Weather';
 
 import './index.less';
 import Folder from './Folder';

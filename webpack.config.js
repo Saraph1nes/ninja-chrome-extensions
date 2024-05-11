@@ -2,7 +2,6 @@ let webpack = require('webpack'),
   path = require('path'),
   fileSystem = require('fs-extra'),
   env = require('./utils/env'),
-  { CleanWebpackPlugin } = require('clean-webpack-plugin'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   TerserPlugin = require('terser-webpack-plugin');
@@ -15,24 +14,13 @@ let alias = {
   '@services': path.resolve('src/services'),
   '@model': path.resolve('src/model'),
   '@utils': path.resolve('src/common/utils'),
-  '@constant': path.resolve('src/common/constant')
+  '@constant': path.resolve('src/common/constant'),
 };
 
 // load the secrets
 let secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js');
 
-let fileExtensions = [
-  'jpg',
-  'jpeg',
-  'png',
-  'gif',
-  'eot',
-  'otf',
-  'svg',
-  'ttf',
-  'woff',
-  'woff2'
-];
+let fileExtensions = ['jpg', 'jpeg', 'png', 'gif', 'eot', 'otf', 'svg', 'ttf', 'woff', 'woff2'];
 
 if (fileSystem.existsSync(secretsPath)) {
   alias['secrets'] = secretsPath;
@@ -47,15 +35,16 @@ let options = {
     background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
     contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
     devtools: path.join(__dirname, 'src', 'pages', 'Devtools', 'index.js'),
-    panel: path.join(__dirname, 'src', 'pages', 'Panel', 'index.jsx')
+    panel: path.join(__dirname, 'src', 'pages', 'Panel', 'index.jsx'),
   },
   chromeExtensionBoilerplate: {
-    notHotReload: ['contentScript', 'devtools']
+    notHotReload: ['contentScript', 'devtools'],
   },
   output: {
+    clean: true, // 在生成文件之前清空 output 目录
     path: path.resolve(__dirname, 'build'),
     filename: '[name].bundle.js',
-    publicPath: ASSET_PATH
+    publicPath: ASSET_PATH,
   },
   module: {
     rules: [
@@ -65,62 +54,56 @@ let options = {
         // in the `src` directory
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
             loader: 'less-loader', // compiles Less to CSS
             options: {
-              lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
-                javascriptEnabled: true
-              }
-            }
-          }
-        ]
+              lessOptions: {
+                // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
       },
       {
         test: new RegExp('.(' + fileExtensions.join('|') + ')$'),
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
+          name: '[name].[ext]',
         },
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.html$/,
         loader: 'html-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       { test: /\.(ts|tsx)$/, loader: 'ts-loader', exclude: /node_modules/ },
       {
         test: /\.(js|jsx)$/,
         use: [
           {
-            loader: 'source-map-loader'
+            loader: 'source-map-loader',
           },
           {
-            loader: 'babel-loader'
-          }
+            loader: 'babel-loader',
+          },
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
     alias: alias,
-    extensions: fileExtensions
-      .map((extension) => '.' + extension)
-      .concat(['.js', '.jsx', '.ts', '.tsx', '.css'])
+    extensions: fileExtensions.map((extension) => '.' + extension).concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    // clean the build folder
-    new CleanWebpackPlugin({
-      verbose: true,
-      cleanStaleWebpackAssets: true
-    }),
     // expose and write the allowed env vars on the compiled bundle
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new CopyWebpackPlugin({
@@ -129,53 +112,53 @@ let options = {
           from: 'src/manifest.json',
           to: path.join(__dirname, 'build'),
           force: true,
-          transform: function(content, path) {
+          transform: function (content, path) {
             // generates the manifest file using the package.json informations
             return Buffer.from(
               JSON.stringify({
                 description: process.env.npm_package_description,
                 version: process.env.npm_package_version,
-                ...JSON.parse(content.toString())
+                ...JSON.parse(content.toString()),
               }),
             );
-          }
-        }
-      ]
+          },
+        },
+      ],
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'src/pages/Content/content.styles.css',
           to: path.join(__dirname, 'build'),
-          force: true
-        }
-      ]
+          force: true,
+        },
+      ],
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'src/assets/img/icon-16.png',
           to: path.join(__dirname, 'build'),
-          force: true
+          force: true,
         },
         {
           from: 'src/assets/img/icon-48.png',
           to: path.join(__dirname, 'build'),
-          force: true
+          force: true,
         },
         {
           from: 'src/assets/img/icon-128.png',
           to: path.join(__dirname, 'build'),
-          force: true
-        }
-      ]
+          force: true,
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.html'),
       filename: 'newtab.html',
       chunks: ['newtab'],
       cache: false,
-      favicon: 'src/assets/img/favicon.ico'
+      favicon: 'src/assets/img/favicon.ico',
     }),
     // new HtmlWebpackPlugin({
     //   template: path.join(__dirname, 'src', 'pages', 'Options', 'index.html'),
@@ -203,8 +186,8 @@ let options = {
     // })
   ],
   infrastructureLogging: {
-    level: 'info'
-  }
+    level: 'info',
+  },
 };
 
 if (env.NODE_ENV === 'development') {
@@ -214,9 +197,9 @@ if (env.NODE_ENV === 'development') {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        extractComments: false
-      })
-    ]
+        extractComments: false,
+      }),
+    ],
   };
 }
 
